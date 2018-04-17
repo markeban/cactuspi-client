@@ -178,7 +178,7 @@ function killProcess(grepPattern) {
   exec(cmdKillProcess);
 }
 
-function generateTextImage({ text, filename, ledRows}) {
+async function generateTextImage({ text, filename, ledRows}) {
   const args = ["./generate-image.py", text, filename, ledRows];
   let resultPromise = spawnSync('python', args);
   let spawnedChildProcess = resultPromise.child;
