@@ -1,0 +1,18 @@
+{
+  "logo": "./cactuspi.ppm",
+  "initMessage": "Cactus Pi",
+  "pubnub": {
+    "subscribeKey": process.env.PUB_NUB_SUBSCRIBE_KEY,
+    "secretKey": process.env.PUB_NUB_SECRET_KEY,
+    "channels": ["cactuspi"]
+  },
+  "ledMatrix": {
+    "path": "/path/to/rpi-rgb-led-matrix",
+    "options": {
+      "ledGpioMapping": "adafruit-hat",
+      "ledNoHardwarePulse": true,
+      "ledRows": 32,
+      "ledChain": 2
+    }
+  }
+}
