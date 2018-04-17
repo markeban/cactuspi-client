@@ -180,20 +180,21 @@ function killProcess(grepPattern) {
 
 function generateTextImage({ text, filename, ledRows}) {
   const args = ["./generate-image.py", text, filename, ledRows];
-  const child = spawnSync('python', args);
-  child.stdout.on('data', function(data) {
-      console.log('stdout: ' + data);
-      //Here is where the output goes
-  });
-  child.stderr.on('data', function(data) {
-      console.log('stderr: ' + data);
-      //Here is where the error output goes
-  });
-  child.on('close', function(code) {
-      console.log('closing code: ' + code);
-      //Here you can get the exit code of the script
-  });
-  return child;
+  let resultPromise = spawnSync('python', args);
+  let spawnedChildProcess = resultPromise.child;
+  try {
+    let {
+      pid,
+      output: [stdout, stderr],
+      stdout,
+      stderr,
+      status,
+      signal,
+    } = await resultPromise;
+  } catch (e) {
+     console.error(e.stack);
+    // The error object also has the same properties as the result object
+  }
 }
 
 function buildLedMatrixOptions(options) {
