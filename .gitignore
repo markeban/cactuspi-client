@@ -1,6 +1,7 @@
 node_modules/
 .git/
 npm-debug.log
+config.json
 init.ppm
 temperature.ppm
 *.ppm
