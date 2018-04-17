@@ -7,7 +7,7 @@
     "channels": ["cactuspi"]
   },
   "ledMatrix": {
-    "path": "/path/to/rpi-rgb-led-matrix",
+    "path": "/home/pi/projects/cactuspi-client/rpi-rgb-led-matrix",
     "options": {
       "ledGpioMapping": "adafruit-hat",
       "ledNoHardwarePulse": true,
