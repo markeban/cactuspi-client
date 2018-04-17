@@ -178,23 +178,11 @@ function killProcess(grepPattern) {
   exec(cmdKillProcess);
 }
 
-async function generateTextImage({ text, filename, ledRows}) {
+function generateTextImage({ text, filename, ledRows}) {
   const args = ["./generate-image.py", text, filename, ledRows];
-  let resultPromise = spawnSync('python', args);
-  let spawnedChildProcess = resultPromise.child;
-  try {
-    let {
-      pid,
-      output: [stdout, stderr],
-      stdout,
-      stderr,
-      status,
-      signal,
-    } = await resultPromise;
-  } catch (e) {
-     console.error(e.stack);
-    // The error object also has the same properties as the result object
-  }
+  const foo = spawnSync('python', args);
+  console.log('python script', foo);
+  return foo;
 }
 
 function buildLedMatrixOptions(options) {
