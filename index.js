@@ -180,15 +180,16 @@ function killProcess(grepPattern) {
 
 function generateTextImage({ text, filename, ledRows}) {
   const args = ["./generate-image.py", text, filename, ledRows];
-  return new Promise(
-    (resolve, reject) => {
-      resolve(spawnSync('python', args, {
-      cwd: process.cwd(),
-      env: process.env,
-      stdio: 'pipe',
-      encoding: 'utf-8'
-    )
-  })
+  return new Promise((resolve, reject) => {
+      resolve(
+        spawnSync('python', args, {
+          cwd: process.cwd(),
+          env: process.env,
+          stdio: 'pipe',
+          encoding: 'utf-8'
+        })
+      )
+  })  
   .then((result) => {
     console.log('***** child process', result);
     return result;
